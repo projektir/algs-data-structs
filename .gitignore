@@ -1,0 +1,29 @@
+# CMake
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+build
+
+# Output
+bin
+
+# VC++
+*.vcxproj
+*.vcxproj.filters
+*.sln
+x32
+x64
+
+# VSCode
+**/.vscode/.cmaketools.json
+c_cpp_properties.json
+
+# Rust
+target/
+*.rs.bk

@@ -1,0 +1,6 @@
+[package]
+name = "arr-miss-num"
+version = "0.1.0"
+authors = ["projektir <oprojektir@gmail.com>"]
+
+[dependencies]
