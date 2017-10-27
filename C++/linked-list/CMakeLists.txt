@@ -11,4 +11,4 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W3")
 SET(SourceFolder src)
 
 ADD_EXECUTABLE(${ProjectName} ${SourceFolder}/main.cpp
-    ${SourceFolder}/list.hpp ${SourceFolder}/list.cpp)
+    ${SourceFolder}/list.hpp)

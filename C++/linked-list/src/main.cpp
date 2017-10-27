@@ -5,7 +5,7 @@
 using ads::List;
 
 int main() {
-    List list;
+    List<int> list;
     list.insert(3);
     list.insert(5);
     list.insert(15);
