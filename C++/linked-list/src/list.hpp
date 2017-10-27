@@ -8,7 +8,7 @@ namespace ads {
 template<typename T>
 class List {
     struct Node {
-        int data;
+        T data;
         Node* next;
     };
 
@@ -17,10 +17,10 @@ public:
     List();
     ~List();
 
-    void insert(const int data);
+    void insert(const T data);
 
-    template<typename T>
-    friend std::ostream& operator<<(std::ostream& os, const List<T>& list);
+    template<typename U>
+    friend std::ostream& operator<<(std::ostream& os, const List<U>& list);
 };
 
 template<typename T>
@@ -45,7 +45,7 @@ List<T>::~List() {
 }
 
 template<typename T>
-void List<T>::insert(const int data) {
+void List<T>::insert(const T data) {
     auto node = new Node{data, nullptr};
 
     if (this->head == nullptr) {
