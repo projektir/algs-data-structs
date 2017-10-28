@@ -11,6 +11,10 @@ int main() {
     list.insert(15);
 
     std::cout << list << std::endl;
+    std::cout << "Size: " << list.size() << std::endl;
+
+    list.reverse();
+    std::cout << list << std::endl;
 
     int blar;
     std::cin >> blar;

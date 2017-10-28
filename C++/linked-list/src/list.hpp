@@ -12,27 +12,31 @@ class List {
         Node* next;
     };
 
+    size_t list_size;
+
     Node* head;
 public:
     List();
     ~List();
 
+    size_t size();
+
     void insert(const T data);
+
+    void reverse();
 
     template<typename U>
     friend std::ostream& operator<<(std::ostream& os, const List<U>& list);
 };
 
 template<typename T>
-List<T>::List() {
-    this->head = nullptr;
-}
+List<T>::List() : list_size(0), head(nullptr) { }
 
 template<typename T>
 List<T>::~List() {
     if (this->head != nullptr) {
         auto current = this->head;
-        auto next = current;
+        Node* next;
 
         while (current != nullptr) {
             next = current->next;
@@ -45,19 +49,46 @@ List<T>::~List() {
 }
 
 template<typename T>
+size_t List<T>::size() {
+    return this->list_size;
+}
+
+template<typename T>
 void List<T>::insert(const T data) {
     auto node = new Node{data, nullptr};
 
     if (this->head == nullptr) {
         this->head = node;
     } else {
-        auto current_node = this->head;
-        while (current_node->next != nullptr) {
-            current_node = current_node->next;
+        auto current = this->head;
+        while (current->next != nullptr) {
+            current = current->next;
         }
 
-        current_node->next = node;
+        current->next = node;
     }
+
+    this->list_size++;
+}
+
+template<typename T>
+void List<T>::reverse() {
+    if (this->list_size < 2) {
+        return;
+    }
+
+    Node* prev = nullptr;
+    auto current = this->head;
+    Node* next;
+
+    do {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    } while (current != nullptr);
+
+    this->head = prev;
 }
 
 template<typename T>
