@@ -9,6 +9,7 @@ int main() {
     list.insert(3);
     list.insert(5);
     list.insert(15);
+    list.insert(2);
 
     std::cout << list << std::endl;
     std::cout << "Size: " << list.size() << std::endl;
