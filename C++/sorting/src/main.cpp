@@ -60,6 +60,14 @@ vector<int> selection_sort(vector<int> vec) {
     return vec;
 }
 
+void merge(vector<int> vec, int left, int middle int right) {
+    
+}
+
+vector<int> merge_sort(vector<int> vec, int left, int right) {
+
+}
+
 int main() {
     string line;
 
