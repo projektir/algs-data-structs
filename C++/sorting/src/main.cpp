@@ -60,12 +60,59 @@ vector<int> selection_sort(vector<int> vec) {
     return vec;
 }
 
-void merge(vector<int> vec, int left, int middle int right) {
-    
+void merge(vector<int>& vec, int l, int m, int r) {
+    int l_size = m - l + 1;
+    int r_size = r - m;
+
+    vector<int> left;
+    for (int i = 0; i < l_size; i++) {
+        left.push_back(vec.at(l + i));
+    }
+
+    vector<int> right;
+    for (int i = 0; i < r_size; i++) {
+        right.push_back(vec.at(m + 1 + i));
+    }
+
+    auto i = 0;
+    auto j = 0;
+
+    auto s = l;
+
+    while (i < l_size && j < r_size) {
+        if (left.at(i) <= right.at(j)) {
+            vec.at(s) = left.at(i);
+            i++;
+        } else {
+            vec.at(s) = right.at(j);
+            j++;
+        }
+
+        s++;
+    }
+
+    while (i < l_size) {
+        vec.at(s) = left.at(i);
+        i++;
+        s++;
+    }
+
+    while (j < r_size) {
+        vec.at(s) = right.at(j);
+        j++;
+        s++;
+    }
 }
 
-vector<int> merge_sort(vector<int> vec, int left, int right) {
+void merge_sort(vector<int>& vec, int left, int right) {
+    if (left < right) {
+        auto middle = (left + right) / 2;
 
+        merge_sort(vec, left, middle);
+        merge_sort(vec, middle + 1, right);
+
+        merge(vec, left, middle, right);
+    }
 }
 
 int main() {
@@ -82,7 +129,16 @@ int main() {
     }
 
     //sorted = insertion_sort(numbers);
-    sorted = selection_sort(numbers);
+    //sorted = selection_sort(numbers);
+    merge_sort(numbers, 0, (int) numbers.size() - 1);
+
+    for (const auto &i : numbers) {
+        cout << i << " ";
+    }
+
+    int t;
+    cin >> t;
+    cin >> t;
 
     return 0;
 }

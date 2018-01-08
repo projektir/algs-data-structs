@@ -27,3 +27,6 @@ c_cpp_properties.json
 # Rust
 target/
 *.rs.bk
+
+# Custom
+C++/interview

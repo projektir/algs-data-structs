@@ -2,6 +2,7 @@
 #define LIST_HPP
 
 #include <iostream>
+#include <vector>
 
 namespace ads {
 
@@ -89,6 +90,29 @@ void List<T>::reverse() {
     } while (current != nullptr);
 
     this->head = prev;
+}
+
+template<typename T>
+void remove_loop(List<T>& list) {
+    std::vector<Node*> seen_nodes;
+
+    if (list.head.next == list.head) {
+        list.head.next = nullptr;
+    } else {
+        auto curr_node = list.head;
+        auto next_node = curr_node.next;
+        seen_nodes.push_back(curr_node);
+
+        while (next_node != nullptr) {
+            if (seen_nodes.find(next_node) != seen_nodes.last()) {
+                curr_node.next = nullptr;
+            } else {
+                seen_nodes.push_back(next_node);
+                curr_node = next_node;
+                next_node = curr_node.next;
+            }
+        }
+    }
 }
 
 template<typename T>
